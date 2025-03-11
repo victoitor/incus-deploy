@@ -52,50 +52,6 @@ resource "incus_instance" "instances" {
   image    = var.image
   profiles = ["default", incus_profile.this.name]
 
-  device {
-    type = "disk"
-    name = "disk1"
-
-    properties = {
-      "pool"   = var.storage_pool
-      "io.bus" = "nvme"
-      "source" = incus_storage_volume.disk1[each.key].name
-    }
-  }
-
-  device {
-    type = "disk"
-    name = "disk2"
-
-    properties = {
-      "pool"   = var.storage_pool
-      "io.bus" = "nvme"
-      "source" = incus_storage_volume.disk2[each.key].name
-    }
-  }
-
-  device {
-    type = "disk"
-    name = "disk3"
-
-    properties = {
-      "pool"   = var.storage_pool
-      "io.bus" = "nvme"
-      "source" = incus_storage_volume.disk3[each.key].name
-    }
-  }
-
-  device {
-    type = "disk"
-    name = "disk5"
-
-    properties = {
-      "pool"   = var.storage_pool
-      "io.bus" = "nvme"
-      "source" = incus_storage_volume.disk5[each.key].name
-    }
-  }
-
   lifecycle {
     ignore_changes = [running]
   }
