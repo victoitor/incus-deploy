@@ -37,7 +37,7 @@ resource "incus_profile" "this" {
     name = "eth0"
 
     properties = {
-      "network" = incus_network.this.name
+      "network" = var.network
       "name"    = "eth0"
     }
   }
