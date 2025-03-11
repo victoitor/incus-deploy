@@ -22,7 +22,7 @@ all:
             local:
               driver: dir
               local_config:
-                source: "/dev/sda2"
+                source: "/var/lib/incus/storage-pools/default"
               description: Local storage pool
 
         incus_roles:
