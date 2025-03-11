@@ -8,7 +8,4 @@ module "baremetal" {
 
   storage_pool = var.incus_storage_pool
   network      = var.incus_network
-
-  ovn_uplink_ipv4_address = var.ovn_uplink_ipv4_address
-  ovn_uplink_ipv6_address = var.ovn_uplink_ipv6_address
 }
