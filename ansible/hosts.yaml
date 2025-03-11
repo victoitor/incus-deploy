@@ -1,0 +1,34 @@
+all:
+  vars:
+    incus_name: "baremetal"
+    incus_release: "stable"
+  children:
+    baremetal:
+      vars:
+        ansible_connection: incus
+        ansible_incus_remote: local
+        ansible_user: root
+        ansible_become: no
+        ansible_incus_project: dev-incus-deploy
+
+        incus_init:
+          network:
+            LOCAL:
+              type: macvlan
+              local_config:
+                parent: enp5s0
+              description: Directly attach to host networking
+          storage:
+            local:
+              driver: dir
+              local_config:
+                source: "/dev/sda2"
+              description: Local storage pool
+
+        incus_roles:
+          - cluster
+
+      hosts:
+        server01:
+        server02:
+        server03:
